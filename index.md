@@ -1,37 +1,171 @@
-## Welcome to GitHub Pages
 
-You can use the [editor on GitHub](https://github.com/Aria-satria/Greating-Aku-for-boy/edit/gh-pages/index.md) to maintain and preview the content for your website in Markdown files.
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+<html lang="en">
 
-### Markdown
+    <head>
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+        <meta charset="utf-8">
 
-```markdown
-Syntax highlighted code block
+        <meta name="viewport" content="width=device-width, initial-scale=1">
 
-# Header 1
-## Header 2
-### Header 3
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
-- Bulleted
-- List
+        <title>Page Title</title>
 
-1. Numbered
-2. List
+    </head>
 
-**Bold** and _Italic_ and `Code` text
+    <body>
 
-[Link](url) and ![Image](src)
-```
+        <div class='position-absolute top-50 start-50 translate-middle'>
 
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
+            <button id='button' class='btn btn-primary btn-lg' onclick='mulai()'> Click Here! </button>
 
-### Jekyll Themes
+            <div id='iloveyou' style='display: none;'>
 
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/Aria-satria/Greating-Aku-for-boy/settings/pages). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
+                <h2 class='text-center'>Aku sayang kamu<br>&#10084;&#65039;</h2>
 
-### Support or Contact
+            </div>
 
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://support.github.com/contact) and we’ll help you sort it out.
+        </div>
+
+        <span id='hati' class='fixed-bottom text-center my-3' onclick='hati()'></span>
+
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.19/dist/sweetalert2.all.min.js"></script>
+
+        <script type="text/javascript">
+
+            const author = 'Aku';
+
+            document.getElementById('hati').innerHTML = `Made with &#10084;&#65039; by ${author}`;
+
+            const swals = Swal.mixin({
+
+                cancelButtonColor: '#d33',
+
+                confirmButtonColor: '#3085d6',
+
+            });
+
+            async function mulai(){
+
+                await swals.fire('Hai Ganteng', 'Aku ada pertanyaan nih buat kamu', 'question');
+
+                await swals.fire('Jawab yang jujur ya!');
+
+                await swals.fire('Awas aja kalo boong!!','','error');
+
+                var { value: nama } = await swals.fire({
+
+                    title: 'Masukin nama kamu dulu',
+
+                    input: 'text',
+
+                    showCancelButton: true,
+
+                });
+
+                if(nama){
+
+                    var { isConfirmed: sayang } = await swals.fire({
+
+                        title: `${nama} sayang ga sama ${author}`,
+
+                        confirmButtonText: 'Sayang',
+
+                        cancelButtonText: 'Gak',
+
+                        showCancelButton: true,
+
+                    });
+
+                    if(sayang){
+
+                        await swals.fire('Aku juga sayang banget sama kamu');
+
+                        var { value: persen } = await swals.fire({
+
+                            title: 'Seberapa sayang emangnya?',
+
+                            icon: 'question',
+
+                            input: 'range',
+
+                            inputLabel: 'Antara 1-100 ya',
+
+                            inputAttributes: {
+
+                                min: 1,
+
+                                max: 100,
+
+                            },
+
+                            inputValue: 50
+
+                        });
+
+                        if(persen){
+
+                            await swals.fire(`Makasih ya udah sayang sama ${author} ${persen}%`);
+
+                            var { isConfirmed: kangen } = await swals.fire({
+
+                                title: 'Sekarang kamu kangen ga sama aku?',
+
+                                confirmButtonText: 'Kangen',
+
+                                cancelButtonText: 'Gak!',
+
+                                showCancelButton: true,
+
+                            });
+
+                            if(kangen){
+
+                                await swals.fire('Huhu iya aku juga kangen kamu :((');
+
+                                await swals.fire('Terakhir deh sayang');
+
+                                await swals.fire('Coba klik ikon hati di paling bawah dong');
+
+                            } else {
+
+                                //gak kangen
+
+                            }
+
+                        }
+
+                    } else {
+
+                        //gak sayang
+
+                    }
+
+                } else {
+
+                    //gak isi nama
+
+                }
+
+            }
+
+        function hati(){
+
+            document.getElementById('button').style = 'display: none';
+
+            document.getElementById('iloveyou').style = '';
+
+            startConfetti();
+
+        }
+
+        </script>
+
+        <script type="text/javascript" src="https://www.cssscript.com/demo/confetti-falling-animation/confetti.js"></script>
+
+        <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script> -->
+
+    </body>
+
+</html>
